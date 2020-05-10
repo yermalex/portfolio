@@ -24,6 +24,31 @@ p {
   margin: 0 0 10px;
 }
 
+/* Scrollbar 
+======================*/
+
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+} 
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  border-left: 1px solid #000;
+
+  background: linear-gradient(45deg, #1051ad, #12c2e9, #2b7ded);
+  
+  animation: gradient 3s ease infinite;
+}
+
+
+/* Container 
+======================*/
+
 .container {
   width: 100%;
   max-width: 1030px;
@@ -152,6 +177,17 @@ p {
 
 /* Btn 
 ======================*/
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
 
 .btn {
   display: inline-block;
@@ -165,21 +201,27 @@ p {
   text-decoration: none;
 
   cursor: pointer;
-  border: none;
-  background-color: #2b7ded;
+  border: none;  
   border-radius: 5px;
+  /* background-color: #2b7ded; */
+  background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+  background-size: 300% 300%;
+  
+  animation: gradient 3s ease infinite;
 
   transition: background .2s linear;
 }
 
 .btn:hover {
-  background-color: #1461cb;
+  /* background-color: #1461cb; */
 }
 
 .btn-full {
   display: block;
   width: 100%;
 }
+
+
 
 /* Author 
 ======================*/
@@ -285,6 +327,83 @@ p {
 .input::placeholder,
 .textarea::placeholder {
   color: #fff;
+}
+
+
+/* FAQ 
+======================*/
+
+.faq {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.faq-item {
+  margin-bottom: 5px;
+
+  border: 1px solid #1461cb;
+}
+
+.faq-title {
+  display: block;
+  padding: 10px 15px;
+  position: relative;
+
+  color: #fff;
+  cursor: pointer;
+
+  transition: background .2s ease-out;
+}
+
+.faq-title:after {
+  content: "";
+  display: block;
+
+  border-style: solid;
+  border-width: 8px 5px 0 5px;
+  border-color: #fff transparent transparent transparent;
+
+  position: absolute;
+  top: 50%;
+  right: 15px;
+
+  transform: translateY(-50%);
+}
+
+.faq-title:hover {
+  background-color: #1461cb;
+}
+
+.faq-input {
+  width: 0;
+  height: 0;
+
+  -webkit-appearance: none;
+  appearance: none;
+
+  position: absolute;
+}
+
+.faq-input:checked ~ .faq-title{
+  background-color: #1461cb;
+}
+
+.faq-input:checked ~ .faq-title:after{
+  border-style: solid;
+  border-width: 0 5px 8px 5px;
+  border-color: transparent transparent #fff transparent;
+}
+
+.faq-input:checked ~ .faq-text{
+  display: block;
+}
+
+.faq-text {
+  display: none;
+  padding: 10px 15px;
+
+  color: #fff;
+  font-size: 14px;
 }
 
 
